@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // Constructor function for Person
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    // Adding a method to the Person prototype
+    Person.prototype.sayHello = function () {
+      return `Hello, my name is ${this.name} and I am ${this.age} years old.`;
+    };
+
+    // Creating an instance of Person
+    const person1 = new Person("Alice", 30);
+
+    // Calling the sayHello method from the prototype
+    console.log(person1.sayHello()); // Output: Hello, my name is Alice and I am 30 years old.
+  </script>
+</html>

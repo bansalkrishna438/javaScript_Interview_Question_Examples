@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // Create a simple Promise
+    const myPromise = new Promise((resolve, reject) => {
+      let success = true; // Change to `false` to simulate rejection
+
+      setTimeout(() => {
+        if (success) {
+          resolve("Promise was successful!");
+        } else {
+          reject("Something went wrong.");
+        }
+      }, 1000); // Simulate a 1-second delay
+    });
+
+    // Handling the Promise
+    myPromise
+      .then((message) => {
+        console.log(message); // If resolved
+      })
+      .catch((error) => {
+        console.log(error); // If rejected
+      });
+  </script>
+</html>

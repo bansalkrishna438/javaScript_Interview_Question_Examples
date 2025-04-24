@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // polyfill of map
+
+    Array.prototype.myMap = function (callback) {
+      let result = [];
+      for (let i = 0; i < this.length; i++) {
+        result.push(callback(this[i], i));
+      }
+      return result;
+    };
+
+    console.log([1, 2, 3].myMap((x) => x * 2)); // [2, 4, 6]
+
+    // polyfill of filter
+
+    Array.prototype.myFilter = function (callback) {
+      let result = [];
+      for (let i = 0; i < this.length; i++) {
+        if (callback(this[i], i)) {
+          result.push(this[i]);
+        }
+      }
+      return result;
+    };
+
+    console.log([1, 2, 3, 4].myFilter((x) => x % 2 === 0)); // [2, 4]
+
+    // polyfill of reduce
+
+    Array.prototype.myReduce = function (callback, initialValue) {
+      let acc = initialValue;
+      for (let i = 0; i < this.length; i++) {
+        acc = acc !== undefined ? callback(acc, this[i]) : this[i];
+      }
+      return acc;
+    };
+
+    console.log([1, 2, 3].myReduce((sum, x) => sum + x, 0)); // 6
+
+    // polyfill of call
+
+    Function.prototype.myCall = function (context, ...args) {
+      context.fn = this;
+      let result = context.fn(...args);
+      delete context.fn;
+      return result;
+    };
+
+    // Example
+    function greet() {
+      return this.name;
+    }
+    console.log(greet.myCall({ name: "Alice" })); // "Alice"
+
+    // polyfill of apply
+
+    Function.prototype.myApply = function (context, args) {
+      context.fn = this;
+      let result = context.fn(...args);
+      delete context.fn;
+      return result;
+    };
+
+    // Example
+    function sum(a, b) {
+      return a + b;
+    }
+    console.log(sum.myApply(null, [2, 3])); // 5
+
+    // polyfill of bind
+
+    Function.prototype.myBind = function (context) {
+      let fn = this;
+      return function (...args) {
+        return fn.apply(context, args);
+      };
+    };
+
+    // Example
+    function sayHi() {
+      return `Hi, I'm ${this.name}`;
+    }
+    let bound = sayHi.myBind({ name: "Bob" });
+    console.log(bound()); // "Hi, I'm Bob"
+  </script>
+</html>
