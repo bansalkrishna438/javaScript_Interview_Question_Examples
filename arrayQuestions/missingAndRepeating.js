@@ -11,8 +11,26 @@ function missing(arr){
 
 }
 
+function missing2(arr){
+    let n = arr.length;
+    for(let i = 1; i<= n ; i++){
+        let found = false
+        for(let j =0 ; j <= n ; j++){
+            if(i === arr[j]){
+                found = true;
+                break
+            }
+        }
+        if(!found){
+            return i
+        }
+    }
+    return -1
+
+}
+
 function repeating(){
 }
 
-const arr = [3,4,5,6,1,8]
-console.log(missingAndRepeating(arr));
+const arr = [1,2,3,4]
+console.log(missing2(arr));
