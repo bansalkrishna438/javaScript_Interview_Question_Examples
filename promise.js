@@ -12,26 +12,44 @@
 // });
 // promise.then((value) => console.log(value)).catch((err) => console.log(err));
 
-const promiseTwo = new Promise((resolve,reject) =>{
-    let error = true
-    if(!error){
-        resolve("promise resolve"); 
-    }
-    else{
-        reject("promise reject")
-    }
-})
+// const promiseTwo = new Promise((resolve,reject) =>{
+//     let error = true
+//     if(!error){
+//         resolve("promise resolve"); 
+//     }
+//     else{
+//         reject("promise reject")
+//     }
+// })
 
-async function isPromiseResolve() {
-    try{
-        const response = await promiseTwo
-        console.log(response) 
-    }
-    catch(err){
-        console.log("err");
+// async function isPromiseResolve() {
+//     try{
+//         const response = await promiseTwo
+//         console.log(response) 
+//     }
+//     catch(err){
+//         console.log("err");
         
         
-    }
-}
+//     }
+// }
 
-isPromiseResolve()
+// isPromiseResolve()
+
+
+// using json data
+
+// async function getData(){
+//     try {
+//         const response = await fetch('http://ergast.com/api/f1/2004/1/results.json');
+//         const data = await response.json()
+//         console.log(data);
+
+//     } catch (error) {
+//         console.log("error",error);
+        
+//     } 
+// }
+// getData()
+
+fetch('http://ergast.com/api/f1/2004/1/results.json').then((response)=> response.json()).then((data) => console.log(data)).catch((error)=> error);
