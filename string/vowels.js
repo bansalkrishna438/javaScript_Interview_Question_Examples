@@ -1,6 +1,6 @@
 function vowels(str){
     let count = 0;
-    let vowArr = ['a','e','i','o','u'];
+    let vowArr = 'aeiou';
     const str1 = str.toLowerCase()
     console.log(str1);
     
